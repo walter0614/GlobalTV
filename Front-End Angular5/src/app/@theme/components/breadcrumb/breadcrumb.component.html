@@ -1,0 +1,12 @@
+<nb-card>
+  <nb-card-body>
+    <nb-actions size="medium">
+      <nb-action *ngFor="let item of options">
+        <a href="#/{{item.Url}}">
+          <nb-user name="{{item.Name}}">
+          </nb-user>
+        </a>
+      </nb-action>
+    </nb-actions>
+  </nb-card-body>
+</nb-card>

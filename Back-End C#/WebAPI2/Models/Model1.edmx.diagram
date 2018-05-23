@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="44bbe04f22fe43eb8fbd7ac494c5ac0b" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="GlobalTVModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.Role" Width="1.5" PointX="1.5" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.User" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.UserClaim" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.UserLogin" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.UserPerson" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.Bodega" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.Cliente" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ClienteServicio" Width="1.5" PointX="11" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ElementoInventario" Width="1.5" PointX="3" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ElementoInventarioBodega" Width="1.5" PointX="8.25" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ElementoInventarioKardex" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ElementoInventarioKardexTipo" Width="1.5" PointX="3" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ElementoInventarioMarca" Width="1.5" PointX="0.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.ElementoInventarioServicio" Width="1.5" PointX="11" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.Empleado" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.OrdenInventario" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.OrdenTrabajo" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.OrdenTrabajoBodega" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.OrdenTrabajoCliente" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.OrdenTrabajoEmpleado" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.OrdenTrabajoOrdenInventario" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.Proveedor" Width="1.5" PointX="3" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GlobalTVModel.Servicio" Width="1.5" PointX="8.75" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="GlobalTVModel.FK__UserPerso__idUse__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__UserPerso__idUse__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__UserPerso__idEmp__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__UserPerso__idEmp__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idBod__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idBod__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idBod__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idBod__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ClienteSe__idCli__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ClienteSe__idCli__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idCli__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idCli__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ClienteSe__idSer__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ClienteSe__idSer__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__1CBC4616" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__1DB06A4F" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idEle__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idOrd__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idOrd__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idPro__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idPro__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idSer__1EA48E88" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__ElementoI__idSer__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idEmp__208CD6FA" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idEmp__2180FB33" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idEmp__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idEmp__2CF2ADDF" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2FCF1A8A" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__30C33EC3" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__22751F6C" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__236943A5" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2B0A656D" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2DE6D218" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.FK__OrdenTrab__idOrd__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="GlobalTVModel.UserRole" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GlobalTVModel.RoleView" Width="1.5" PointX="7.75" PointY="15.875" />
+        <EntityTypeShape EntityType="GlobalTVModel.View" Width="1.5" PointX="5.5" PointY="27.125" />
+        <AssociationConnector Association="GlobalTVModel.FK__RoleView__IdRole__3864608B" />
+        <AssociationConnector Association="GlobalTVModel.FK__RoleView__IdView__395884C4" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

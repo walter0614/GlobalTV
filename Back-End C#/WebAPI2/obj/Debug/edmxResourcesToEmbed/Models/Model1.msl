@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GlobalTVModelStoreContainer" CdmEntityContainer="GlobalTVEntities">
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="GlobalTVModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="GlobalTVModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="GlobalTVModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClaim">
+      <EntityTypeMapping TypeName="GlobalTVModel.UserClaim">
+        <MappingFragment StoreEntitySet="UserClaim">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogin">
+      <EntityTypeMapping TypeName="GlobalTVModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPerson">
+      <EntityTypeMapping TypeName="GlobalTVModel.UserPerson">
+        <MappingFragment StoreEntitySet="UserPerson">
+          <ScalarProperty Name="idUserPerson" ColumnName="idUserPerson" />
+          <ScalarProperty Name="idUser" ColumnName="idUser" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bodega">
+      <EntityTypeMapping TypeName="GlobalTVModel.Bodega">
+        <MappingFragment StoreEntitySet="Bodega">
+          <ScalarProperty Name="idBodega" ColumnName="idBodega" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="GlobalTVModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="primerNombre" ColumnName="primerNombre" />
+          <ScalarProperty Name="segundoNombre" ColumnName="segundoNombre" />
+          <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
+          <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ClienteServicio">
+      <EntityTypeMapping TypeName="GlobalTVModel.ClienteServicio">
+        <MappingFragment StoreEntitySet="ClienteServicio">
+          <ScalarProperty Name="idClienteServicio" ColumnName="idClienteServicio" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElementoInventario">
+      <EntityTypeMapping TypeName="GlobalTVModel.ElementoInventario">
+        <MappingFragment StoreEntitySet="ElementoInventario">
+          <ScalarProperty Name="idElementoInventario" ColumnName="idElementoInventario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="minExistencias" ColumnName="minExistencias" />
+          <ScalarProperty Name="maxExistencias" ColumnName="maxExistencias" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="metodo" ColumnName="metodo" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idElementoMarca" ColumnName="idElementoMarca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElementoInventarioBodega">
+      <EntityTypeMapping TypeName="GlobalTVModel.ElementoInventarioBodega">
+        <MappingFragment StoreEntitySet="ElementoInventarioBodega">
+          <ScalarProperty Name="idElementoInventarioBodega" ColumnName="idElementoInventarioBodega" />
+          <ScalarProperty Name="idBodega" ColumnName="idBodega" />
+          <ScalarProperty Name="idElementoInventario" ColumnName="idElementoInventario" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElementoInventarioKardex">
+      <EntityTypeMapping TypeName="GlobalTVModel.ElementoInventarioKardex">
+        <MappingFragment StoreEntitySet="ElementoInventarioKardex">
+          <ScalarProperty Name="idElementoInventarioKardex" ColumnName="idElementoInventarioKardex" />
+          <ScalarProperty Name="existencias" ColumnName="existencias" />
+          <ScalarProperty Name="entradaSalida" ColumnName="entradaSalida" />
+          <ScalarProperty Name="valorUnidad" ColumnName="valorUnidad" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idElementoInventario" ColumnName="idElementoInventario" />
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="idOrden" ColumnName="idOrden" />
+          <ScalarProperty Name="idElementoInventarioKardexTipo" ColumnName="idElementoInventarioKardexTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElementoInventarioKardexTipo">
+      <EntityTypeMapping TypeName="GlobalTVModel.ElementoInventarioKardexTipo">
+        <MappingFragment StoreEntitySet="ElementoInventarioKardexTipo">
+          <ScalarProperty Name="idElementoInventarioKardexTipo" ColumnName="idElementoInventarioKardexTipo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElementoInventarioMarca">
+      <EntityTypeMapping TypeName="GlobalTVModel.ElementoInventarioMarca">
+        <MappingFragment StoreEntitySet="ElementoInventarioMarca">
+          <ScalarProperty Name="idElementoInventarioMarca" ColumnName="idElementoInventarioMarca" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ElementoInventarioServicio">
+      <EntityTypeMapping TypeName="GlobalTVModel.ElementoInventarioServicio">
+        <MappingFragment StoreEntitySet="ElementoInventarioServicio">
+          <ScalarProperty Name="idElementoInventarioServicio" ColumnName="idElementoInventarioServicio" />
+          <ScalarProperty Name="idElementoInventario" ColumnName="idElementoInventario" />
+          <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="GlobalTVModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenInventario">
+      <EntityTypeMapping TypeName="GlobalTVModel.OrdenInventario">
+        <MappingFragment StoreEntitySet="OrdenInventario">
+          <ScalarProperty Name="idOrdenInventario" ColumnName="idOrdenInventario" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenTrabajo">
+      <EntityTypeMapping TypeName="GlobalTVModel.OrdenTrabajo">
+        <MappingFragment StoreEntitySet="OrdenTrabajo">
+          <ScalarProperty Name="idOrdenTrabajo" ColumnName="idOrdenTrabajo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenTrabajoBodega">
+      <EntityTypeMapping TypeName="GlobalTVModel.OrdenTrabajoBodega">
+        <MappingFragment StoreEntitySet="OrdenTrabajoBodega">
+          <ScalarProperty Name="idOrdenTrabajoBodega" ColumnName="idOrdenTrabajoBodega" />
+          <ScalarProperty Name="idOrdenTrabajo" ColumnName="idOrdenTrabajo" />
+          <ScalarProperty Name="idBodega" ColumnName="idBodega" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenTrabajoCliente">
+      <EntityTypeMapping TypeName="GlobalTVModel.OrdenTrabajoCliente">
+        <MappingFragment StoreEntitySet="OrdenTrabajoCliente">
+          <ScalarProperty Name="idOrdenTrabajoCliente" ColumnName="idOrdenTrabajoCliente" />
+          <ScalarProperty Name="idOrdenTrabajo" ColumnName="idOrdenTrabajo" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenTrabajoEmpleado">
+      <EntityTypeMapping TypeName="GlobalTVModel.OrdenTrabajoEmpleado">
+        <MappingFragment StoreEntitySet="OrdenTrabajoEmpleado">
+          <ScalarProperty Name="idOrdenTrabajoEmpleado" ColumnName="idOrdenTrabajoEmpleado" />
+          <ScalarProperty Name="idOrdenTrabajo" ColumnName="idOrdenTrabajo" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdenTrabajoOrdenInventario">
+      <EntityTypeMapping TypeName="GlobalTVModel.OrdenTrabajoOrdenInventario">
+        <MappingFragment StoreEntitySet="OrdenTrabajoOrdenInventario">
+          <ScalarProperty Name="idOrdenTrabajoOrdenInventario" ColumnName="idOrdenTrabajoOrdenInventario" />
+          <ScalarProperty Name="idOrdenTrabajo" ColumnName="idOrdenTrabajo" />
+          <ScalarProperty Name="idOrdenInventario" ColumnName="idOrdenInventario" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedor">
+      <EntityTypeMapping TypeName="GlobalTVModel.Proveedor">
+        <MappingFragment StoreEntitySet="Proveedor">
+          <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicio">
+      <EntityTypeMapping TypeName="GlobalTVModel.Servicio">
+        <MappingFragment StoreEntitySet="Servicio">
+          <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="creacion" ColumnName="creacion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserRole" TypeName="GlobalTVModel.UserRole" StoreEntitySet="UserRole">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="RoleView">
+      <EntityTypeMapping TypeName="GlobalTVModel.RoleView">
+        <MappingFragment StoreEntitySet="RoleView">
+          <ScalarProperty Name="IdView" ColumnName="IdView" />
+          <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+          <ScalarProperty Name="IdRoleView" ColumnName="IdRoleView" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View">
+      <EntityTypeMapping TypeName="GlobalTVModel.View">
+        <MappingFragment StoreEntitySet="View">
+          <ScalarProperty Name="NameView" ColumnName="NameView" />
+          <ScalarProperty Name="IdView" ColumnName="IdView" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

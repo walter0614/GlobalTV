@@ -1,0 +1,41 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<nb-card>
+  <nb-card-header>
+    Usuarios
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event, content)" (createConfirm)="onCreateConfirm($event, content)"
+      (editConfirm)="onSaveConfirm($event, content)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<!-- Modal Confirm Action -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Esta seguro de guardar los cambios?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click'); rejectedAction();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <nb-card *ngIf="actionOnTable.action">
+      <nb-card-header>Permisos Rol</nb-card-header>
+      <nb-card-body>
+        <div class="row" align="center">
+          <h1>Here your body!</h1>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="modal-footer">
+    <div class="form-row">
+      <div class="form-group col-6">
+        <button type="button" class="btn btn-hero-danger" (click)="c('Close click');rejectedAction()">Cancelar</button>
+      </div>
+      <div class="form-group col-6">
+        <button class="btn btn-hero-success" (click)="resolveAction()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

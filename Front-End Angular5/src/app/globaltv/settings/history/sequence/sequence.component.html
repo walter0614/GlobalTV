@@ -1,0 +1,114 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row" align="center">
+  <div class="col">
+    <h3>{{ historyBS.history.name }}</h3>
+    <p>Secuencia</p>
+  </div>
+</div>
+<div class="row" align="center">
+  <div class="col">
+    <nb-card class="solar-card" droppable (onDrop)="deleteSequence($event)">
+      <nb-card-header>
+        <h3>Actividades</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <nb-card draggable *ngFor="let activity of activityBS.activityList" [dragData]="activity" role="alert" class="card">
+          <nb-card-header class="without-padding">
+            <h3 class="text-success">{{activity.name}}</h3>
+          </nb-card-header>
+          <nb-card-body class="without-padding">
+            <i class="ion-ios-game-controller-b-outline icon-large"></i>
+            <h5 class="text-warning">{{ activity.description }}</h5>
+            <button type="button" class="close btn btn-success btn-tn" (click)="addSequence({dragData:activity})">
+              <span aria-hidden="true">&gt;</span>
+            </button>
+          </nb-card-body>
+        </nb-card>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col">
+    <nb-card class="solar-card" droppable (onDrop)="addSequence($event)">
+      <nb-card-header>
+        <h3>Secuencia</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <div draggable *ngFor="let sequence of sequenceBS.sequenceList" [dragData]="sequence">
+          <nb-card role="alert" class="card without-margin-bottom">
+            <nb-card-header class="without-padding">
+              <h3 class="text-success">{{sequence.Activity.name}}</h3>
+            </nb-card-header>
+            <nb-card-body class="without-padding">
+              <i class="ion-ios-game-controller-b-outline icon-large"></i>
+              <br>
+              <!-- <h6 class="text-warning">Posición: {{ sequence.orderSequence }}</h6> -->
+              <h5 class="text-info">Reglas</h5>
+              <button type="button" class="close btn btn-danger btn-tn" (click)="deleteSequence({dragData:sequence})">
+                <span aria-hidden="true">&lt;</span>
+              </button>
+            </nb-card-body>
+          </nb-card>
+          <div *ngFor="let rule of sequence.Rules" class="inline" (click)="SetRules(rule)">
+            <i class="ion-arrow-down-c icon-medium"></i>
+          </div>
+          <div (click)="AddRule(sequence)" class="inline">
+            <i class="ion-android-add-circle icon-more-medium"></i>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col" *ngIf="transactionSelected.idSequence > 0">
+    <nb-card class="solar-card">
+      <nb-card-header>
+        <h3>Configuración</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <h5 class="text-info">Siguiente Actividad</h5>
+        <nb-card role="alert" class="card" droppable (onDrop)="addActivityToSequence($event)">
+          <nb-card-header class="without-padding">
+            <h3 class="text-success">{{transactionSelected.Activity.name}}</h3>
+          </nb-card-header>
+          <nb-card-body class="without-padding">
+            <i class="ion-ios-game-controller-b-outline icon-large"></i>
+          </nb-card-body>
+        </nb-card>
+        <!-- form -->
+        <form class="form-group" #ruleForm="ngForm" (ngSubmit)="onSubmit(ruleForm)">
+          <input type="hidden" name="idRules" #idRules="ngModel" [(ngModel)]="transactionSelected.idRules">
+          <input type="hidden" name="Activity.idActivity" #Activity.idActivity="ngModel" [(ngModel)]="transactionSelected.Activity.idActivity">
+          <nb-card role="alert" class="card">
+            <nb-card-header class="without-padding">
+              <!-- <small>Tipo de Regla: </small>{{ transactionSelected.RulesType.name }}</li> -->
+              <small class="text-danger">Tipo de Regla: Regla del Sistema</small>
+              <!-- <small>Dificultad: </small>{{ transactionSelected.Difficulty.name }}</li> -->
+              <small class="text-danger">Dificultad: NORMAL</small>
+            </nb-card-header>
+            <nb-card-body>
+              <small>% Minimo Cualitativo: </small>
+              <input type="number" class="form-control" name="minQualitative" #minQualitative="ngModel" [(ngModel)]="transactionSelected.minQualitative"
+                placeholder="Min Cualitativo" min="0" max="100" required>
+              <small>% Maximo Cualitativo: </small>
+              <input type="number" class="form-control" name="maxQualitative" #maxQualitative="ngModel" [(ngModel)]="transactionSelected.maxQualitative"
+                placeholder="Max Cualitativo" min="0" max="100" required>
+              <small>Puntos Minimos Cuantitativos: </small>
+              <input type="number" class="form-control" name="minQuantitative" #minQuantitative="ngModel" [(ngModel)]="transactionSelected.minQuantitative"
+                placeholder="Max Cuantitativo" min="0" max="100" required>
+              <small>Puntos Maximos Cuantitativos: </small>
+              <input type="number" class="form-control" name="maxQuantitative" #maxQuantitative="ngModel" [(ngModel)]="transactionSelected.maxQuantitative"
+                placeholder="Max Cuantitativo" min="0" max="100" required>
+              <br>
+              <br>
+              <button *ngIf="transactionSelected.idRules>0" type="button" class="btn btn-hero-danger" (click)="deleteRule(transactionSelected)">Eliminar</button>
+              <br>
+              <br>
+              <button type="submit" class="btn btn-hero-info">Guardar</button>
+            </nb-card-body>
+          </nb-card>
+          <!-- form -->
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+</div>

@@ -1,0 +1,52 @@
+<breadcrumb data="Pacientes:interactive/rivas/patient,Sesiones:interactive/rivas/patient/result/{{idPlayerHistory}},Actividades:interactive/rivas/patient/activities/{{myInput}}">
+</breadcrumb>
+<nb-card *ngIf="playerHistoryBS.patientHistory" class="solar-card">
+    <nb-card-body>
+        <div class="info">
+            <div class="value">
+                <span>Puntos de: </span>{{playerHistoryBS.patientHistory.Player.User.UserName}}
+            </div>
+            <div class="value">
+                <span>Historia actual: </span>{{playerHistoryBS.patientHistory.History.name}}
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+<!-- <div >
+    <h3>{{ item.name }}</h3>
+    <h5 *ngFor="let itemB of item.ActivityObject">
+        {{itemB.Object.name}}
+    </h5>
+</div> -->
+
+
+<div class="row">
+        <div class="col" *ngFor="let item of activityBS.activitiesObjects">
+            <nb-card class="solar-card">
+                <nb-card-header>{{ item.name }}</nb-card-header>
+                <nb-card-body>
+                    <div class="info">
+                        <div class="row">
+                            <div class="col">
+                                <span>Identificador: </span>
+                            </div>
+                            <div class="col value">{{item.idActivity}}</div>
+                        </div>
+                        <div class="row" align="center">
+                            <div class="col">
+                                <button 
+                                    class="btn btn-hero-success" 
+                                    (click)="redirectTo({
+                                        idPlayerHistory:id,
+                                        idPlayerSesion:item.idPlayerSesion
+                                    })">Puntos</button>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <span>{{item.description}}</span>
+                        </div>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>

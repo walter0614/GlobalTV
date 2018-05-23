@@ -1,0 +1,1124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GlobalTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleView">
+    <Key>
+      <PropertyRef Name="IdRoleView" />
+    </Key>
+    <Property Name="IdRoleView" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRole" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="IdView" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPerson">
+    <Key>
+      <PropertyRef Name="idUserPerson" />
+    </Key>
+    <Property Name="idUserPerson" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="nvarchar" MaxLength="128" />
+    <Property Name="idEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="View">
+    <Key>
+      <PropertyRef Name="IdView" />
+    </Key>
+    <Property Name="IdView" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameView" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bodega">
+    <Key>
+      <PropertyRef Name="idBodega" />
+    </Key>
+    <Property Name="idBodega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ubicacion" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="telefono" Type="bigint" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="identificacion" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="primerNombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="segundoNombre" Type="nvarchar" MaxLength="256" />
+    <Property Name="primerApellido" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="segundoApellido" Type="nvarchar" MaxLength="256" />
+    <Property Name="telefono" Type="bigint" />
+    <Property Name="celular" Type="bigint" Nullable="false" />
+    <Property Name="direccion" Type="nvarchar(max)" />
+    <Property Name="genero" Type="bit" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="correo" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ClienteServicio">
+    <Key>
+      <PropertyRef Name="idClienteServicio" />
+    </Key>
+    <Property Name="idClienteServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCliente" Type="int" />
+    <Property Name="idServicio" Type="int" />
+    <Property Name="creacion" Type="datetime" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="ElementoInventario">
+    <Key>
+      <PropertyRef Name="idElementoInventario" />
+    </Key>
+    <Property Name="idElementoInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="minExistencias" Type="bigint" Nullable="false" />
+    <Property Name="maxExistencias" Type="bigint" Nullable="false" />
+    <Property Name="referencia" Type="nvarchar" MaxLength="256" />
+    <Property Name="metodo" Type="nvarchar" MaxLength="256" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="idElementoMarca" Type="int" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioBodega">
+    <Key>
+      <PropertyRef Name="idElementoInventarioBodega" />
+    </Key>
+    <Property Name="idElementoInventarioBodega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idBodega" Type="int" />
+    <Property Name="idElementoInventario" Type="int" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioKardex">
+    <Key>
+      <PropertyRef Name="idElementoInventarioKardex" />
+    </Key>
+    <Property Name="idElementoInventarioKardex" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="existencias" Type="bigint" Nullable="false" />
+    <Property Name="entradaSalida" Type="bigint" Nullable="false" />
+    <Property Name="valorUnidad" Type="bigint" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="idElementoInventario" Type="int" />
+    <Property Name="idProveedor" Type="int" />
+    <Property Name="idOrden" Type="int" />
+    <Property Name="idElementoInventarioKardexTipo" Type="int" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioKardexTipo">
+    <Key>
+      <PropertyRef Name="idElementoInventarioKardexTipo" />
+    </Key>
+    <Property Name="idElementoInventarioKardexTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioMarca">
+    <Key>
+      <PropertyRef Name="idElementoInventarioMarca" />
+    </Key>
+    <Property Name="idElementoInventarioMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioServicio">
+    <Key>
+      <PropertyRef Name="idElementoInventarioServicio" />
+    </Key>
+    <Property Name="idElementoInventarioServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idElementoInventario" Type="int" />
+    <Property Name="idServicio" Type="int" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="identificacion" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="telefono" Type="bigint" />
+    <Property Name="celular" Type="bigint" Nullable="false" />
+    <Property Name="direccion" Type="nvarchar(max)" />
+    <Property Name="genero" Type="bit" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdenInventario">
+    <Key>
+      <PropertyRef Name="idOrdenInventario" />
+    </Key>
+    <Property Name="idOrdenInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajo">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajo" />
+    </Key>
+    <Property Name="idOrdenTrabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="idEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoBodega">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoBodega" />
+    </Key>
+    <Property Name="idOrdenTrabajoBodega" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOrdenTrabajo" Type="int" />
+    <Property Name="idBodega" Type="int" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoCliente">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoCliente" />
+    </Key>
+    <Property Name="idOrdenTrabajoCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOrdenTrabajo" Type="int" />
+    <Property Name="idCliente" Type="int" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoEmpleado">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoEmpleado" />
+    </Key>
+    <Property Name="idOrdenTrabajoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOrdenTrabajo" Type="int" />
+    <Property Name="idEmpleado" Type="int" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoOrdenInventario">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoOrdenInventario" />
+    </Key>
+    <Property Name="idOrdenTrabajoOrdenInventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOrdenTrabajo" Type="int" />
+    <Property Name="idOrdenInventario" Type="int" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="ubicacion" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="telefono" Type="bigint" Nullable="false" />
+    <Property Name="creacion" Type="datetime" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="idServicio" />
+    </Key>
+    <Property Name="idServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="valor" Type="bigint" Nullable="false" />
+    <Property Name="creacion" Type="datetime" />
+    <Property Name="estado" Type="bit" />
+  </EntityType>
+  <Association Name="FK__ClienteSe__idCli__0B91BA14">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idCli__0C85DE4D">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idSer__0D7A0286">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idSer__0E6E26BF">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idBod__114A936A">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idBod__123EB7A3">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__0F624AF8">
+    <End Role="ElementoInventarioMarca" Type="Self.ElementoInventarioMarca" Multiplicity="0..1" />
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioMarca">
+        <PropertyRef Name="idElementoInventarioMarca" />
+      </Principal>
+      <Dependent Role="ElementoInventario">
+        <PropertyRef Name="idElementoMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__10566F31">
+    <End Role="ElementoInventarioMarca" Type="Self.ElementoInventarioMarca" Multiplicity="0..1" />
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioMarca">
+        <PropertyRef Name="idElementoInventarioMarca" />
+      </Principal>
+      <Dependent Role="ElementoInventario">
+        <PropertyRef Name="idElementoMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1332DBDC">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__14270015">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__17036CC0">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__18EBB532">
+    <End Role="ElementoInventarioKardexTipo" Type="Self.ElementoInventarioKardexTipo" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioKardexTipo">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__19DFD96B">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1BC821DD">
+    <End Role="ElementoInventarioKardexTipo" Type="Self.ElementoInventarioKardexTipo" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioKardexTipo">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1CBC4616">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1DB06A4F">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idOrd__151B244E">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idOrd__160F4887">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idPro__17F790F9">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idPro__1AD3FDA4">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idSer__1EA48E88">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idSer__1F98B2C1">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idBod__245D67DE">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idBod__25518C17">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idCli__282DF8C2">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idCli__29221CFB">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__208CD6FA">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajo">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__2180FB33">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajo">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__2BFE89A6">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__2CF2ADDF">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__22751F6C">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__236943A5">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2645B050">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2739D489">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2A164134">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2B0A656D">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2DE6D218">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2EDAF651">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2FCF1A8A">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__30C33EC3">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleView__IdRole__3864608B">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleView" Type="Self.RoleView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleView">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleView__IdView__395884C4">
+    <End Role="View" Type="Self.View" Multiplicity="1" />
+    <End Role="RoleView" Type="Self.RoleView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="View">
+        <PropertyRef Name="IdView" />
+      </Principal>
+      <Dependent Role="RoleView">
+        <PropertyRef Name="IdView" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idEmp__05D8E0BE">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idEmp__06CD04F7">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idUse__07C12930">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idUse__08B54D69">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GlobalTVModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleView" EntityType="Self.RoleView" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserClaim" EntityType="Self.UserClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserPerson" EntityType="Self.UserPerson" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View" EntityType="Self.View" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bodega" EntityType="Self.Bodega" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ClienteServicio" EntityType="Self.ClienteServicio" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ElementoInventario" EntityType="Self.ElementoInventario" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ElementoInventarioBodega" EntityType="Self.ElementoInventarioBodega" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ElementoInventarioKardex" EntityType="Self.ElementoInventarioKardex" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ElementoInventarioKardexTipo" EntityType="Self.ElementoInventarioKardexTipo" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ElementoInventarioMarca" EntityType="Self.ElementoInventarioMarca" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="ElementoInventarioServicio" EntityType="Self.ElementoInventarioServicio" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="OrdenInventario" EntityType="Self.OrdenInventario" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="OrdenTrabajo" EntityType="Self.OrdenTrabajo" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="OrdenTrabajoBodega" EntityType="Self.OrdenTrabajoBodega" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="OrdenTrabajoCliente" EntityType="Self.OrdenTrabajoCliente" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="OrdenTrabajoEmpleado" EntityType="Self.OrdenTrabajoEmpleado" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="OrdenTrabajoOrdenInventario" EntityType="Self.OrdenTrabajoOrdenInventario" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="Inventario" store:Type="Tables" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="Inventario" store:Type="Tables" />
+    <AssociationSet Name="FK__ClienteSe__idCli__0B91BA14" Association="Self.FK__ClienteSe__idCli__0B91BA14">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idCli__0C85DE4D" Association="Self.FK__ClienteSe__idCli__0C85DE4D">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idSer__0D7A0286" Association="Self.FK__ClienteSe__idSer__0D7A0286">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idSer__0E6E26BF" Association="Self.FK__ClienteSe__idSer__0E6E26BF">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idBod__114A936A" Association="Self.FK__ElementoI__idBod__114A936A">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idBod__123EB7A3" Association="Self.FK__ElementoI__idBod__123EB7A3">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__0F624AF8" Association="Self.FK__ElementoI__idEle__0F624AF8">
+      <End Role="ElementoInventarioMarca" EntitySet="ElementoInventarioMarca" />
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__10566F31" Association="Self.FK__ElementoI__idEle__10566F31">
+      <End Role="ElementoInventarioMarca" EntitySet="ElementoInventarioMarca" />
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1332DBDC" Association="Self.FK__ElementoI__idEle__1332DBDC">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__14270015" Association="Self.FK__ElementoI__idEle__14270015">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__17036CC0" Association="Self.FK__ElementoI__idEle__17036CC0">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__18EBB532" Association="Self.FK__ElementoI__idEle__18EBB532">
+      <End Role="ElementoInventarioKardexTipo" EntitySet="ElementoInventarioKardexTipo" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__19DFD96B" Association="Self.FK__ElementoI__idEle__19DFD96B">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1BC821DD" Association="Self.FK__ElementoI__idEle__1BC821DD">
+      <End Role="ElementoInventarioKardexTipo" EntitySet="ElementoInventarioKardexTipo" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1CBC4616" Association="Self.FK__ElementoI__idEle__1CBC4616">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1DB06A4F" Association="Self.FK__ElementoI__idEle__1DB06A4F">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idOrd__151B244E" Association="Self.FK__ElementoI__idOrd__151B244E">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idOrd__160F4887" Association="Self.FK__ElementoI__idOrd__160F4887">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idPro__17F790F9" Association="Self.FK__ElementoI__idPro__17F790F9">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idPro__1AD3FDA4" Association="Self.FK__ElementoI__idPro__1AD3FDA4">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idSer__1EA48E88" Association="Self.FK__ElementoI__idSer__1EA48E88">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idSer__1F98B2C1" Association="Self.FK__ElementoI__idSer__1F98B2C1">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idBod__245D67DE" Association="Self.FK__OrdenTrab__idBod__245D67DE">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idBod__25518C17" Association="Self.FK__OrdenTrab__idBod__25518C17">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idCli__282DF8C2" Association="Self.FK__OrdenTrab__idCli__282DF8C2">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idCli__29221CFB" Association="Self.FK__OrdenTrab__idCli__29221CFB">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__208CD6FA" Association="Self.FK__OrdenTrab__idEmp__208CD6FA">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__2180FB33" Association="Self.FK__OrdenTrab__idEmp__2180FB33">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__2BFE89A6" Association="Self.FK__OrdenTrab__idEmp__2BFE89A6">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__2CF2ADDF" Association="Self.FK__OrdenTrab__idEmp__2CF2ADDF">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__22751F6C" Association="Self.FK__OrdenTrab__idOrd__22751F6C">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__236943A5" Association="Self.FK__OrdenTrab__idOrd__236943A5">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2645B050" Association="Self.FK__OrdenTrab__idOrd__2645B050">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2739D489" Association="Self.FK__OrdenTrab__idOrd__2739D489">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2A164134" Association="Self.FK__OrdenTrab__idOrd__2A164134">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2B0A656D" Association="Self.FK__OrdenTrab__idOrd__2B0A656D">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2DE6D218" Association="Self.FK__OrdenTrab__idOrd__2DE6D218">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2EDAF651" Association="Self.FK__OrdenTrab__idOrd__2EDAF651">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2FCF1A8A" Association="Self.FK__OrdenTrab__idOrd__2FCF1A8A">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__30C33EC3" Association="Self.FK__OrdenTrab__idOrd__30C33EC3">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleView__IdRole__3864608B" Association="Self.FK__RoleView__IdRole__3864608B">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleView" EntitySet="RoleView" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleView__IdView__395884C4" Association="Self.FK__RoleView__IdView__395884C4">
+      <End Role="View" EntitySet="View" />
+      <End Role="RoleView" EntitySet="RoleView" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idEmp__05D8E0BE" Association="Self.FK__UserPerso__idEmp__05D8E0BE">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idEmp__06CD04F7" Association="Self.FK__UserPerso__idEmp__06CD04F7">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idUse__07C12930" Association="Self.FK__UserPerso__idUse__07C12930">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idUse__08B54D69" Association="Self.FK__UserPerso__idUse__08B54D69">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaim" EntitySet="UserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,81 @@
+<breadcrumb data="Clientes:interactive/rivas/patient"></breadcrumb>
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row">
+  <div class="col-md-12" *ngIf="search.length > 0">
+    <nb-card class="solar-card">
+      <nb-card-header class="text-success">
+        <div class="row">
+          <div class="col-md-6">
+            <strong>Busqueda: </strong> {{ search }}
+            <h2 *ngIf="patientBS.patientSearch.length == 0">Sin Resultados</h2>
+          </div>
+          <div class="col-md-6" align="right">
+            <button type="button" class="btn btn-danger btn-icon" (click)="resetSearch()">
+              <i class="ion-close-circled"></i>
+            </button>
+          </div>
+        </div>
+      </nb-card-header>
+    </nb-card>
+  </div>
+  <div class="col-12 col-md-6">
+    <nb-card *ngIf="patientBS.patientSearch.length > 0">
+      <nb-tabset fullWidth>
+        <nb-tab tabTitle="Detalles">
+          <div class="contact pointer" *ngFor="let patient of patientBS.patientSearch" (click)="showForEdit(patient)">
+            <nb-user [picture]="patient.Image" [name]="patient.User.FirstName+' '+patient.User.LastName" title="normal" size="large"></nb-user>
+            <i class="i-contact ion-ios-bookmarks-outline"></i>
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+  <div class="col-12 col-md-6">
+    <nb-card *ngIf="currentPatient.idPlayer>0">
+      <nb-tabset fullWidth>
+        <nb-tab tabTitle="Editar Paciente">
+          <div class="contact">
+            <nb-user [picture]="currentPatient.Image" [name]="currentPatient.User.FirstName+' '+currentPatient.User.LastName" title="NORMAL"
+              size="large"></nb-user>
+          </div>
+          <div style="max-width: 100%;overflow-x: hidden;">
+            <div class="row alert alert-info" *ngFor="let history of currentPatient.PlayerHistory" align="center">
+              <div class="col-md-12">
+                <button type="button" class="close" aria-label="Close" (click)="deleteHistoryPatient(history.idPlayerHistory)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h3>{{ history.History.name }}</h3>
+              </div>
+              <div class="col-md-12">
+                <h4>Identificador: {{ history.idHistory }}</h4>
+              </div>
+              <div class="col-md-12">
+                <i class="ion-ios-bookmarks-outline icon-large"></i>
+              </div>
+              <div class="col-md-6">
+                <a href="#/interactive/setting/history/sequence/{{history.idHistory}}" class="btn btn-hero-info">Secuencia</a>
+              </div>
+              <div class="col-md-6">
+                <a href="#/interactive/rivas/patient/result/{{currentPatient.PlayerHistory[0].idPlayerHistory}}" class="btn btn-hero-danger">Resultados</a>
+              </div>
+            </div>
+            <div class="row alert alert-warning" *ngIf="currentPatient.PlayerHistory.length==0" align="center">
+              <div class="col-md-12">
+                <h3>Asignar Historia</h3>
+                <form class="form-group" #historyForm="ngForm" (ngSubmit)="onSubmitHistory(historyForm)">
+                  <select class="form-control" name="idHistory" #idHistory="ngModel" [(ngModel)]="historyForm.idHistory" required>
+                    <option *ngFor="let history of historyBS.historyList" [value]="history.idHistory">
+                      {{history.Name}}
+                    </option>
+                  </select>
+                  <br>
+                  <button class="btn btn-outline-success">Guardar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </nb-tab>
+      </nb-tabset>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,139 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row">
+  <div class="col-md-12" *ngIf="search.length > 0">
+    <nb-card class="solar-card">
+      <nb-card-header class="text-success">
+        <div class="row">
+          <div class="col-md-6">
+            <strong>Busqueda: </strong> {{ search }}
+            <h2 *ngIf="environmentBS.environmentSearch.length == 0">Sin Resultados</h2>
+          </div>
+          <div class="col-md-6" align="right">
+            <button type="button" class="btn btn-danger btn-icon" (click)="resetSearch()">
+              <i class="ion-close-circled"></i>
+            </button>
+          </div>
+        </div>
+      </nb-card-header>
+    </nb-card>
+  </div>
+  <div class="col-md-12" align="right">
+    <button class="btn btn-success" (click)="open(content)">Agregar Entorno</button>
+    <br>
+    <br>
+  </div>
+  <div class="col-md-6" *ngFor="let environment of environmentBS.environmentSearch">
+    <nb-card class="solar-card">
+      <nb-card-header>
+        <h3 class="text-info">{{ environment.name }}</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row" align="center">
+          <div class="col-12">
+            <h4>Identificador: {{ environment.idEnvironment }}</h4>
+            <i class="ion-ios-world-outline icon-large"></i>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-hero-warning" (click)="open(content, environment)">Editar</button>
+          </div>
+          <div class="col-12" style="margin-top:3%">
+            <button class="btn btn-hero-info" (click)="open(actEnv, environment)">
+              <i class="ion-ios-game-controller-b-outline"></i> Actividades
+            </button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+<!-- Modal Add Environment -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar/Editar Entorno
+      <i class="ion-ios-world-outline"></i>
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form class="form-group" #environmentForm="ngForm" (ngSubmit)="onSubmit(environmentForm)">
+    <div class="modal-body">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group col-12">
+            <input class="form-control" name="name" #name="ngModel" [(ngModel)]="environmentSelected.name" placeholder="Nombre" required>
+            <input type="hidden" name="idEnvironment" #idEnvironment="ngModel" [(ngModel)]="environmentSelected.idEnvironment">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <button type="button" class="btn btn-hero-danger" (click)="c('Close click')">Cancelar</button>
+        </div>
+        <div class="form-group col-6">
+          <button type="submit" class="btn btn-hero-success">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<!-- Modal Add ActivityEnvironment -->
+<ng-template #actEnv let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar/Editar Actividades
+      <i class="ion-ios-world-outline"></i>
+      <h4 class="text-info">{{ environmentSelected.name }}</h4>
+    </h4>
+  </div>
+  <div class="modal-body">
+    <div class="row" align="center">
+      <div class="col-md-12" align="left" *ngFor="let actEnv of environmentSelected.ActivityEnvironment">
+        <nb-card>
+          <nb-card-header>
+            <div class="row">
+              <div class="col-md-12">
+                <button type="button" class="close btn btn-danger btn-tn" (click)="deleteActivityEnvironment(actEnv.idActivityEnvironment)">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h3>
+                  <i class="ion-ios-americanfootball-outline"></i> {{ actEnv.Activity.name }}</h3>
+              </div>
+            </div>
+          </nb-card-header>
+        </nb-card>
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-hero-info" [nbPopover]="formAddActivity" nbPopoverPlacement="bottom">
+          <i class="ion-android-add-circle"></i> Nueva Actividad</button>
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-hero-danger" style="margin-top:3%" (click)="d('Cross click')">
+          <i class="ion-close-circled"></i>
+          Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+<!-- Template Form Competition -->
+<ng-template #formAddActivity>
+  <div class="p-4">
+    <form class="form-group" #activityForm="ngForm" (ngSubmit)="onSubmitAE(activityForm)">
+      <input type="hidden" name="idEnvironment" #idEnvironment="ngModel" [(ngModel)]="environmentSelected.idEnvironment">
+      <select class="form-control" name="idActivity" #idActivity="ngModel" [(ngModel)]="activityForm.idActivity" required>
+        <option>Seleccione una opción</option>
+        <option *ngFor="let activity of activityBS.activityList" [value]="activity.idActivity">
+          {{activity.name}}
+        </option>
+      </select>
+      <br>
+      <button class="btn btn-outline-success">Guardar</button>
+    </form>
+  </div>
+</ng-template>

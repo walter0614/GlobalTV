@@ -1,0 +1,56 @@
+<breadcrumb data="Pacientes:interactive/rivas/patient,Sesiones:interactive/rivas/patient/result/{{id}}">
+</breadcrumb>
+<nb-card *ngIf="playerHistoryBS.patientHistory" class="solar-card">
+    <nb-card-body>
+        <div class="info">
+            <div class="value">
+                <span>Sesiones de: </span>{{playerHistoryBS.patientHistory.Player.User.UserName}}
+            </div>
+            <div class="value">
+                <span>Historia actual: </span>{{playerHistoryBS.patientHistory.History.name}}
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
+<div class="row">
+    <div class="col" *ngFor="let item of playerSesionBS.playerSesiontList">
+        <nb-card class="solar-card">
+            <nb-card-header>{{ prettyDate2(item.startDate) }}</nb-card-header>
+            <nb-card-body>
+                <div class="info">
+                    <div class="row">
+                        <div class="col">
+                            <span>Origen: </span>
+                        </div>
+                        <div class="col value">{{item.locationOrigin}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span>Sitio: </span>
+                        </div>
+                        <div class="col value">{{item.siteOrigin}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span>Sistema: </span>
+                        </div>
+                        <div class="col value">{{item.systemOrigin}}</div>
+                    </div>
+                    <div class="row" align="center">
+                        <div class="col">
+                            <button 
+                                class="btn btn-hero-success" 
+                                (click)="redirectTo({
+                                    idPlayerHistory:id,
+                                    idPlayerSesion:item.idPlayerSesion
+                                })">Puntos</button>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <span>{{ convertStringToDate(item.startDate) }}</span>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

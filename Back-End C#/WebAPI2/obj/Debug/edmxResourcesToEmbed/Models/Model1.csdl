@@ -1,0 +1,1185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GlobalTVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.UserRole" FromRole="Role" ToRole="User" />
+    <NavigationProperty Name="RoleView" Relationship="GlobalTVModel.FK__RoleView__IdRole__3864608B" FromRole="Role" ToRole="RoleView" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserPerson" Relationship="Self.FK__UserPerso__idUse__07C12930" FromRole="User" ToRole="UserPerson" />
+    <NavigationProperty Name="UserPerson1" Relationship="Self.FK__UserPerso__idUse__08B54D69" FromRole="User" ToRole="UserPerson" />
+    <NavigationProperty Name="UserClaim" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="User" ToRole="UserClaim" />
+    <NavigationProperty Name="UserLogin" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="User" ToRole="UserLogin" />
+    <NavigationProperty Name="Role" Relationship="Self.UserRole" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="UserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="UserClaim" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="UserLogin" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserPerson">
+    <Key>
+      <PropertyRef Name="idUserPerson" />
+    </Key>
+    <Property Name="idUserPerson" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserPerso__idUse__07C12930" FromRole="UserPerson" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Self.FK__UserPerso__idUse__08B54D69" FromRole="UserPerson" ToRole="User" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__UserPerso__idEmp__05D8E0BE" FromRole="UserPerson" ToRole="Empleado" />
+    <NavigationProperty Name="Empleado1" Relationship="Self.FK__UserPerso__idEmp__06CD04F7" FromRole="UserPerson" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Bodega">
+    <Key>
+      <PropertyRef Name="idBodega" />
+    </Key>
+    <Property Name="idBodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ubicacion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="telefono" Type="Int64" Nullable="false" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ElementoInventarioBodega" Relationship="Self.FK__ElementoI__idBod__114A936A" FromRole="Bodega" ToRole="ElementoInventarioBodega" />
+    <NavigationProperty Name="ElementoInventarioBodega1" Relationship="Self.FK__ElementoI__idBod__123EB7A3" FromRole="Bodega" ToRole="ElementoInventarioBodega" />
+    <NavigationProperty Name="OrdenTrabajoBodega" Relationship="Self.FK__OrdenTrab__idBod__245D67DE" FromRole="Bodega" ToRole="OrdenTrabajoBodega" />
+    <NavigationProperty Name="OrdenTrabajoBodega1" Relationship="Self.FK__OrdenTrab__idBod__25518C17" FromRole="Bodega" ToRole="OrdenTrabajoBodega" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <Property Name="identificacion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="primerNombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="segundoNombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="primerApellido" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="segundoApellido" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="telefono" Type="Int64" />
+    <Property Name="celular" Type="Int64" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="genero" Type="Boolean" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClienteServicio" Relationship="Self.FK__ClienteSe__idCli__0B91BA14" FromRole="Cliente" ToRole="ClienteServicio" />
+    <NavigationProperty Name="ClienteServicio1" Relationship="Self.FK__ClienteSe__idCli__0C85DE4D" FromRole="Cliente" ToRole="ClienteServicio" />
+    <NavigationProperty Name="OrdenTrabajoCliente" Relationship="Self.FK__OrdenTrab__idCli__282DF8C2" FromRole="Cliente" ToRole="OrdenTrabajoCliente" />
+    <NavigationProperty Name="OrdenTrabajoCliente1" Relationship="Self.FK__OrdenTrab__idCli__29221CFB" FromRole="Cliente" ToRole="OrdenTrabajoCliente" />
+  </EntityType>
+  <EntityType Name="ClienteServicio">
+    <Key>
+      <PropertyRef Name="idClienteServicio" />
+    </Key>
+    <Property Name="idClienteServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="idServicio" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Precision="3" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__ClienteSe__idCli__0B91BA14" FromRole="ClienteServicio" ToRole="Cliente" />
+    <NavigationProperty Name="Cliente1" Relationship="Self.FK__ClienteSe__idCli__0C85DE4D" FromRole="ClienteServicio" ToRole="Cliente" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK__ClienteSe__idSer__0D7A0286" FromRole="ClienteServicio" ToRole="Servicio" />
+    <NavigationProperty Name="Servicio1" Relationship="Self.FK__ClienteSe__idSer__0E6E26BF" FromRole="ClienteServicio" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="ElementoInventario">
+    <Key>
+      <PropertyRef Name="idElementoInventario" />
+    </Key>
+    <Property Name="idElementoInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="minExistencias" Type="Int64" Nullable="false" />
+    <Property Name="maxExistencias" Type="Int64" Nullable="false" />
+    <Property Name="referencia" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="metodo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <Property Name="idElementoMarca" Type="Int32" />
+    <NavigationProperty Name="ElementoInventarioMarca" Relationship="Self.FK__ElementoI__idEle__0F624AF8" FromRole="ElementoInventario" ToRole="ElementoInventarioMarca" />
+    <NavigationProperty Name="ElementoInventarioMarca1" Relationship="Self.FK__ElementoI__idEle__10566F31" FromRole="ElementoInventario" ToRole="ElementoInventarioMarca" />
+    <NavigationProperty Name="ElementoInventarioBodega" Relationship="Self.FK__ElementoI__idEle__1332DBDC" FromRole="ElementoInventario" ToRole="ElementoInventarioBodega" />
+    <NavigationProperty Name="ElementoInventarioBodega1" Relationship="Self.FK__ElementoI__idEle__14270015" FromRole="ElementoInventario" ToRole="ElementoInventarioBodega" />
+    <NavigationProperty Name="ElementoInventarioKardex" Relationship="Self.FK__ElementoI__idEle__17036CC0" FromRole="ElementoInventario" ToRole="ElementoInventarioKardex" />
+    <NavigationProperty Name="ElementoInventarioKardex1" Relationship="Self.FK__ElementoI__idEle__19DFD96B" FromRole="ElementoInventario" ToRole="ElementoInventarioKardex" />
+    <NavigationProperty Name="ElementoInventarioServicio" Relationship="Self.FK__ElementoI__idEle__1CBC4616" FromRole="ElementoInventario" ToRole="ElementoInventarioServicio" />
+    <NavigationProperty Name="ElementoInventarioServicio1" Relationship="Self.FK__ElementoI__idEle__1DB06A4F" FromRole="ElementoInventario" ToRole="ElementoInventarioServicio" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioBodega">
+    <Key>
+      <PropertyRef Name="idElementoInventarioBodega" />
+    </Key>
+    <Property Name="idElementoInventarioBodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBodega" Type="Int32" />
+    <Property Name="idElementoInventario" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bodega" Relationship="Self.FK__ElementoI__idBod__114A936A" FromRole="ElementoInventarioBodega" ToRole="Bodega" />
+    <NavigationProperty Name="Bodega1" Relationship="Self.FK__ElementoI__idBod__123EB7A3" FromRole="ElementoInventarioBodega" ToRole="Bodega" />
+    <NavigationProperty Name="ElementoInventario" Relationship="Self.FK__ElementoI__idEle__1332DBDC" FromRole="ElementoInventarioBodega" ToRole="ElementoInventario" />
+    <NavigationProperty Name="ElementoInventario1" Relationship="Self.FK__ElementoI__idEle__14270015" FromRole="ElementoInventarioBodega" ToRole="ElementoInventario" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioKardex">
+    <Key>
+      <PropertyRef Name="idElementoInventarioKardex" />
+    </Key>
+    <Property Name="idElementoInventarioKardex" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="existencias" Type="Int64" Nullable="false" />
+    <Property Name="entradaSalida" Type="Int64" Nullable="false" />
+    <Property Name="valorUnidad" Type="Int64" Nullable="false" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <Property Name="idElementoInventario" Type="Int32" />
+    <Property Name="idProveedor" Type="Int32" />
+    <Property Name="idOrden" Type="Int32" />
+    <Property Name="idElementoInventarioKardexTipo" Type="Int32" />
+    <NavigationProperty Name="ElementoInventario" Relationship="Self.FK__ElementoI__idEle__17036CC0" FromRole="ElementoInventarioKardex" ToRole="ElementoInventario" />
+    <NavigationProperty Name="ElementoInventario1" Relationship="Self.FK__ElementoI__idEle__19DFD96B" FromRole="ElementoInventarioKardex" ToRole="ElementoInventario" />
+    <NavigationProperty Name="ElementoInventarioKardexTipo" Relationship="Self.FK__ElementoI__idEle__18EBB532" FromRole="ElementoInventarioKardex" ToRole="ElementoInventarioKardexTipo" />
+    <NavigationProperty Name="ElementoInventarioKardexTipo1" Relationship="Self.FK__ElementoI__idEle__1BC821DD" FromRole="ElementoInventarioKardex" ToRole="ElementoInventarioKardexTipo" />
+    <NavigationProperty Name="OrdenInventario" Relationship="Self.FK__ElementoI__idOrd__151B244E" FromRole="ElementoInventarioKardex" ToRole="OrdenInventario" />
+    <NavigationProperty Name="OrdenInventario1" Relationship="Self.FK__ElementoI__idOrd__160F4887" FromRole="ElementoInventarioKardex" ToRole="OrdenInventario" />
+    <NavigationProperty Name="Proveedor" Relationship="Self.FK__ElementoI__idPro__17F790F9" FromRole="ElementoInventarioKardex" ToRole="Proveedor" />
+    <NavigationProperty Name="Proveedor1" Relationship="Self.FK__ElementoI__idPro__1AD3FDA4" FromRole="ElementoInventarioKardex" ToRole="Proveedor" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioKardexTipo">
+    <Key>
+      <PropertyRef Name="idElementoInventarioKardexTipo" />
+    </Key>
+    <Property Name="idElementoInventarioKardexTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ElementoInventarioKardex" Relationship="Self.FK__ElementoI__idEle__18EBB532" FromRole="ElementoInventarioKardexTipo" ToRole="ElementoInventarioKardex" />
+    <NavigationProperty Name="ElementoInventarioKardex1" Relationship="Self.FK__ElementoI__idEle__1BC821DD" FromRole="ElementoInventarioKardexTipo" ToRole="ElementoInventarioKardex" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioMarca">
+    <Key>
+      <PropertyRef Name="idElementoInventarioMarca" />
+    </Key>
+    <Property Name="idElementoInventarioMarca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ElementoInventario" Relationship="Self.FK__ElementoI__idEle__0F624AF8" FromRole="ElementoInventarioMarca" ToRole="ElementoInventario" />
+    <NavigationProperty Name="ElementoInventario1" Relationship="Self.FK__ElementoI__idEle__10566F31" FromRole="ElementoInventarioMarca" ToRole="ElementoInventario" />
+  </EntityType>
+  <EntityType Name="ElementoInventarioServicio">
+    <Key>
+      <PropertyRef Name="idElementoInventarioServicio" />
+    </Key>
+    <Property Name="idElementoInventarioServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idElementoInventario" Type="Int32" />
+    <Property Name="idServicio" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ElementoInventario" Relationship="Self.FK__ElementoI__idEle__1CBC4616" FromRole="ElementoInventarioServicio" ToRole="ElementoInventario" />
+    <NavigationProperty Name="ElementoInventario1" Relationship="Self.FK__ElementoI__idEle__1DB06A4F" FromRole="ElementoInventarioServicio" ToRole="ElementoInventario" />
+    <NavigationProperty Name="Servicio" Relationship="Self.FK__ElementoI__idSer__1EA48E88" FromRole="ElementoInventarioServicio" ToRole="Servicio" />
+    <NavigationProperty Name="Servicio1" Relationship="Self.FK__ElementoI__idSer__1F98B2C1" FromRole="ElementoInventarioServicio" ToRole="Servicio" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <Property Name="identificacion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="telefono" Type="Int64" />
+    <Property Name="celular" Type="Int64" Nullable="false" />
+    <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="genero" Type="Boolean" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="UserPerson" Relationship="Self.FK__UserPerso__idEmp__05D8E0BE" FromRole="Empleado" ToRole="UserPerson" />
+    <NavigationProperty Name="UserPerson1" Relationship="Self.FK__UserPerso__idEmp__06CD04F7" FromRole="Empleado" ToRole="UserPerson" />
+    <NavigationProperty Name="OrdenTrabajo" Relationship="Self.FK__OrdenTrab__idEmp__208CD6FA" FromRole="Empleado" ToRole="OrdenTrabajo" />
+    <NavigationProperty Name="OrdenTrabajo1" Relationship="Self.FK__OrdenTrab__idEmp__2180FB33" FromRole="Empleado" ToRole="OrdenTrabajo" />
+    <NavigationProperty Name="OrdenTrabajoEmpleado" Relationship="Self.FK__OrdenTrab__idEmp__2BFE89A6" FromRole="Empleado" ToRole="OrdenTrabajoEmpleado" />
+    <NavigationProperty Name="OrdenTrabajoEmpleado1" Relationship="Self.FK__OrdenTrab__idEmp__2CF2ADDF" FromRole="Empleado" ToRole="OrdenTrabajoEmpleado" />
+  </EntityType>
+  <EntityType Name="OrdenInventario">
+    <Key>
+      <PropertyRef Name="idOrdenInventario" />
+    </Key>
+    <Property Name="idOrdenInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ElementoInventarioKardex" Relationship="Self.FK__ElementoI__idOrd__151B244E" FromRole="OrdenInventario" ToRole="ElementoInventarioKardex" />
+    <NavigationProperty Name="ElementoInventarioKardex1" Relationship="Self.FK__ElementoI__idOrd__160F4887" FromRole="OrdenInventario" ToRole="ElementoInventarioKardex" />
+    <NavigationProperty Name="OrdenTrabajoOrdenInventario" Relationship="Self.FK__OrdenTrab__idOrd__2FCF1A8A" FromRole="OrdenInventario" ToRole="OrdenTrabajoOrdenInventario" />
+    <NavigationProperty Name="OrdenTrabajoOrdenInventario1" Relationship="Self.FK__OrdenTrab__idOrd__30C33EC3" FromRole="OrdenInventario" ToRole="OrdenTrabajoOrdenInventario" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajo">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajo" />
+    </Key>
+    <Property Name="idOrdenTrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__OrdenTrab__idEmp__208CD6FA" FromRole="OrdenTrabajo" ToRole="Empleado" />
+    <NavigationProperty Name="Empleado1" Relationship="Self.FK__OrdenTrab__idEmp__2180FB33" FromRole="OrdenTrabajo" ToRole="Empleado" />
+    <NavigationProperty Name="OrdenTrabajoBodega" Relationship="Self.FK__OrdenTrab__idOrd__22751F6C" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoBodega" />
+    <NavigationProperty Name="OrdenTrabajoBodega1" Relationship="Self.FK__OrdenTrab__idOrd__236943A5" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoBodega" />
+    <NavigationProperty Name="OrdenTrabajoCliente" Relationship="Self.FK__OrdenTrab__idOrd__2645B050" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoCliente" />
+    <NavigationProperty Name="OrdenTrabajoCliente1" Relationship="Self.FK__OrdenTrab__idOrd__2739D489" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoCliente" />
+    <NavigationProperty Name="OrdenTrabajoEmpleado" Relationship="Self.FK__OrdenTrab__idOrd__2A164134" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoEmpleado" />
+    <NavigationProperty Name="OrdenTrabajoEmpleado1" Relationship="Self.FK__OrdenTrab__idOrd__2B0A656D" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoEmpleado" />
+    <NavigationProperty Name="OrdenTrabajoOrdenInventario" Relationship="Self.FK__OrdenTrab__idOrd__2DE6D218" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoOrdenInventario" />
+    <NavigationProperty Name="OrdenTrabajoOrdenInventario1" Relationship="Self.FK__OrdenTrab__idOrd__2EDAF651" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoOrdenInventario" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoBodega">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoBodega" />
+    </Key>
+    <Property Name="idOrdenTrabajoBodega" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idOrdenTrabajo" Type="Int32" />
+    <Property Name="idBodega" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Bodega" Relationship="Self.FK__OrdenTrab__idBod__245D67DE" FromRole="OrdenTrabajoBodega" ToRole="Bodega" />
+    <NavigationProperty Name="Bodega1" Relationship="Self.FK__OrdenTrab__idBod__25518C17" FromRole="OrdenTrabajoBodega" ToRole="Bodega" />
+    <NavigationProperty Name="OrdenTrabajo" Relationship="Self.FK__OrdenTrab__idOrd__22751F6C" FromRole="OrdenTrabajoBodega" ToRole="OrdenTrabajo" />
+    <NavigationProperty Name="OrdenTrabajo1" Relationship="Self.FK__OrdenTrab__idOrd__236943A5" FromRole="OrdenTrabajoBodega" ToRole="OrdenTrabajo" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoCliente">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoCliente" />
+    </Key>
+    <Property Name="idOrdenTrabajoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idOrdenTrabajo" Type="Int32" />
+    <Property Name="idCliente" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__OrdenTrab__idCli__282DF8C2" FromRole="OrdenTrabajoCliente" ToRole="Cliente" />
+    <NavigationProperty Name="Cliente1" Relationship="Self.FK__OrdenTrab__idCli__29221CFB" FromRole="OrdenTrabajoCliente" ToRole="Cliente" />
+    <NavigationProperty Name="OrdenTrabajo" Relationship="Self.FK__OrdenTrab__idOrd__2645B050" FromRole="OrdenTrabajoCliente" ToRole="OrdenTrabajo" />
+    <NavigationProperty Name="OrdenTrabajo1" Relationship="Self.FK__OrdenTrab__idOrd__2739D489" FromRole="OrdenTrabajoCliente" ToRole="OrdenTrabajo" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoEmpleado">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoEmpleado" />
+    </Key>
+    <Property Name="idOrdenTrabajoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idOrdenTrabajo" Type="Int32" />
+    <Property Name="idEmpleado" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__OrdenTrab__idEmp__2BFE89A6" FromRole="OrdenTrabajoEmpleado" ToRole="Empleado" />
+    <NavigationProperty Name="Empleado1" Relationship="Self.FK__OrdenTrab__idEmp__2CF2ADDF" FromRole="OrdenTrabajoEmpleado" ToRole="Empleado" />
+    <NavigationProperty Name="OrdenTrabajo" Relationship="Self.FK__OrdenTrab__idOrd__2A164134" FromRole="OrdenTrabajoEmpleado" ToRole="OrdenTrabajo" />
+    <NavigationProperty Name="OrdenTrabajo1" Relationship="Self.FK__OrdenTrab__idOrd__2B0A656D" FromRole="OrdenTrabajoEmpleado" ToRole="OrdenTrabajo" />
+  </EntityType>
+  <EntityType Name="OrdenTrabajoOrdenInventario">
+    <Key>
+      <PropertyRef Name="idOrdenTrabajoOrdenInventario" />
+    </Key>
+    <Property Name="idOrdenTrabajoOrdenInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idOrdenTrabajo" Type="Int32" />
+    <Property Name="idOrdenInventario" Type="Int32" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OrdenInventario" Relationship="Self.FK__OrdenTrab__idOrd__2FCF1A8A" FromRole="OrdenTrabajoOrdenInventario" ToRole="OrdenInventario" />
+    <NavigationProperty Name="OrdenInventario1" Relationship="Self.FK__OrdenTrab__idOrd__30C33EC3" FromRole="OrdenTrabajoOrdenInventario" ToRole="OrdenInventario" />
+    <NavigationProperty Name="OrdenTrabajo" Relationship="Self.FK__OrdenTrab__idOrd__2DE6D218" FromRole="OrdenTrabajoOrdenInventario" ToRole="OrdenTrabajo" />
+    <NavigationProperty Name="OrdenTrabajo1" Relationship="Self.FK__OrdenTrab__idOrd__2EDAF651" FromRole="OrdenTrabajoOrdenInventario" ToRole="OrdenTrabajo" />
+  </EntityType>
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="idProveedor" />
+    </Key>
+    <Property Name="idProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ubicacion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="telefono" Type="Int64" Nullable="false" />
+    <Property Name="creacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ElementoInventarioKardex" Relationship="Self.FK__ElementoI__idPro__17F790F9" FromRole="Proveedor" ToRole="ElementoInventarioKardex" />
+    <NavigationProperty Name="ElementoInventarioKardex1" Relationship="Self.FK__ElementoI__idPro__1AD3FDA4" FromRole="Proveedor" ToRole="ElementoInventarioKardex" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="idServicio" />
+    </Key>
+    <Property Name="idServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="valor" Type="Int64" Nullable="false" />
+    <Property Name="creacion" Type="DateTime" Precision="3" />
+    <Property Name="estado" Type="Boolean" />
+    <NavigationProperty Name="ClienteServicio" Relationship="Self.FK__ClienteSe__idSer__0D7A0286" FromRole="Servicio" ToRole="ClienteServicio" />
+    <NavigationProperty Name="ClienteServicio1" Relationship="Self.FK__ClienteSe__idSer__0E6E26BF" FromRole="Servicio" ToRole="ClienteServicio" />
+    <NavigationProperty Name="ElementoInventarioServicio" Relationship="Self.FK__ElementoI__idSer__1EA48E88" FromRole="Servicio" ToRole="ElementoInventarioServicio" />
+    <NavigationProperty Name="ElementoInventarioServicio1" Relationship="Self.FK__ElementoI__idSer__1F98B2C1" FromRole="Servicio" ToRole="ElementoInventarioServicio" />
+  </EntityType>
+  <Association Name="FK__UserPerso__idUse__07C12930">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idUse__08B54D69">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserClaim" Type="Self.UserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idEmp__05D8E0BE">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPerso__idEmp__06CD04F7">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="UserPerson" Type="Self.UserPerson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="UserPerson">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idBod__114A936A">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idBod__123EB7A3">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idBod__245D67DE">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idBod__25518C17">
+    <End Role="Bodega" Type="Self.Bodega" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bodega">
+        <PropertyRef Name="idBodega" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idBodega" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idCli__0B91BA14">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idCli__0C85DE4D">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idCli__282DF8C2">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idCli__29221CFB">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idSer__0D7A0286">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ClienteSe__idSer__0E6E26BF">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ClienteServicio" Type="Self.ClienteServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ClienteServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__0F624AF8">
+    <End Role="ElementoInventarioMarca" Type="Self.ElementoInventarioMarca" Multiplicity="0..1" />
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioMarca">
+        <PropertyRef Name="idElementoInventarioMarca" />
+      </Principal>
+      <Dependent Role="ElementoInventario">
+        <PropertyRef Name="idElementoMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__10566F31">
+    <End Role="ElementoInventarioMarca" Type="Self.ElementoInventarioMarca" Multiplicity="0..1" />
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioMarca">
+        <PropertyRef Name="idElementoInventarioMarca" />
+      </Principal>
+      <Dependent Role="ElementoInventario">
+        <PropertyRef Name="idElementoMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1332DBDC">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__14270015">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioBodega" Type="Self.ElementoInventarioBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioBodega">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__17036CC0">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__19DFD96B">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1CBC4616">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1DB06A4F">
+    <End Role="ElementoInventario" Type="Self.ElementoInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventario">
+        <PropertyRef Name="idElementoInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idElementoInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__18EBB532">
+    <End Role="ElementoInventarioKardexTipo" Type="Self.ElementoInventarioKardexTipo" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioKardexTipo">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idEle__1BC821DD">
+    <End Role="ElementoInventarioKardexTipo" Type="Self.ElementoInventarioKardexTipo" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ElementoInventarioKardexTipo">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idElementoInventarioKardexTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idOrd__151B244E">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idOrd__160F4887">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idOrden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idPro__17F790F9">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idPro__1AD3FDA4">
+    <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+    <End Role="ElementoInventarioKardex" Type="Self.ElementoInventarioKardex" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedor">
+        <PropertyRef Name="idProveedor" />
+      </Principal>
+      <Dependent Role="ElementoInventarioKardex">
+        <PropertyRef Name="idProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idSer__1EA48E88">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ElementoI__idSer__1F98B2C1">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+    <End Role="ElementoInventarioServicio" Type="Self.ElementoInventarioServicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="idServicio" />
+      </Principal>
+      <Dependent Role="ElementoInventarioServicio">
+        <PropertyRef Name="idServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__208CD6FA">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajo">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__2180FB33">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajo">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__2BFE89A6">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idEmp__2CF2ADDF">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2FCF1A8A">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__30C33EC3">
+    <End Role="OrdenInventario" Type="Self.OrdenInventario" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__22751F6C">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__236943A5">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoBodega" Type="Self.OrdenTrabajoBodega" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoBodega">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2645B050">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2739D489">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoCliente" Type="Self.OrdenTrabajoCliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoCliente">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2A164134">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2B0A656D">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoEmpleado" Type="Self.OrdenTrabajoEmpleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoEmpleado">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2DE6D218">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrdenTrab__idOrd__2EDAF651">
+    <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+    <End Role="OrdenTrabajoOrdenInventario" Type="Self.OrdenTrabajoOrdenInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenTrabajo">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Principal>
+      <Dependent Role="OrdenTrabajoOrdenInventario">
+        <PropertyRef Name="idOrdenTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRole">
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="GlobalTVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserClaim" EntityType="Self.UserClaim" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" />
+    <EntitySet Name="UserPerson" EntityType="Self.UserPerson" />
+    <EntitySet Name="Bodega" EntityType="Self.Bodega" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="ClienteServicio" EntityType="Self.ClienteServicio" />
+    <EntitySet Name="ElementoInventario" EntityType="Self.ElementoInventario" />
+    <EntitySet Name="ElementoInventarioBodega" EntityType="Self.ElementoInventarioBodega" />
+    <EntitySet Name="ElementoInventarioKardex" EntityType="Self.ElementoInventarioKardex" />
+    <EntitySet Name="ElementoInventarioKardexTipo" EntityType="Self.ElementoInventarioKardexTipo" />
+    <EntitySet Name="ElementoInventarioMarca" EntityType="Self.ElementoInventarioMarca" />
+    <EntitySet Name="ElementoInventarioServicio" EntityType="Self.ElementoInventarioServicio" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+    <EntitySet Name="OrdenInventario" EntityType="Self.OrdenInventario" />
+    <EntitySet Name="OrdenTrabajo" EntityType="Self.OrdenTrabajo" />
+    <EntitySet Name="OrdenTrabajoBodega" EntityType="Self.OrdenTrabajoBodega" />
+    <EntitySet Name="OrdenTrabajoCliente" EntityType="Self.OrdenTrabajoCliente" />
+    <EntitySet Name="OrdenTrabajoEmpleado" EntityType="Self.OrdenTrabajoEmpleado" />
+    <EntitySet Name="OrdenTrabajoOrdenInventario" EntityType="Self.OrdenTrabajoOrdenInventario" />
+    <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+    <AssociationSet Name="FK__UserPerso__idUse__07C12930" Association="Self.FK__UserPerso__idUse__07C12930">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idUse__08B54D69" Association="Self.FK__UserPerso__idUse__08B54D69">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaim" EntitySet="UserClaim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idEmp__05D8E0BE" Association="Self.FK__UserPerso__idEmp__05D8E0BE">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPerso__idEmp__06CD04F7" Association="Self.FK__UserPerso__idEmp__06CD04F7">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="UserPerson" EntitySet="UserPerson" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idBod__114A936A" Association="Self.FK__ElementoI__idBod__114A936A">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idBod__123EB7A3" Association="Self.FK__ElementoI__idBod__123EB7A3">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idBod__245D67DE" Association="Self.FK__OrdenTrab__idBod__245D67DE">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idBod__25518C17" Association="Self.FK__OrdenTrab__idBod__25518C17">
+      <End Role="Bodega" EntitySet="Bodega" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idCli__0B91BA14" Association="Self.FK__ClienteSe__idCli__0B91BA14">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idCli__0C85DE4D" Association="Self.FK__ClienteSe__idCli__0C85DE4D">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idCli__282DF8C2" Association="Self.FK__OrdenTrab__idCli__282DF8C2">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idCli__29221CFB" Association="Self.FK__OrdenTrab__idCli__29221CFB">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idSer__0D7A0286" Association="Self.FK__ClienteSe__idSer__0D7A0286">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ClienteSe__idSer__0E6E26BF" Association="Self.FK__ClienteSe__idSer__0E6E26BF">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ClienteServicio" EntitySet="ClienteServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__0F624AF8" Association="Self.FK__ElementoI__idEle__0F624AF8">
+      <End Role="ElementoInventarioMarca" EntitySet="ElementoInventarioMarca" />
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__10566F31" Association="Self.FK__ElementoI__idEle__10566F31">
+      <End Role="ElementoInventarioMarca" EntitySet="ElementoInventarioMarca" />
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1332DBDC" Association="Self.FK__ElementoI__idEle__1332DBDC">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__14270015" Association="Self.FK__ElementoI__idEle__14270015">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioBodega" EntitySet="ElementoInventarioBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__17036CC0" Association="Self.FK__ElementoI__idEle__17036CC0">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__19DFD96B" Association="Self.FK__ElementoI__idEle__19DFD96B">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1CBC4616" Association="Self.FK__ElementoI__idEle__1CBC4616">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1DB06A4F" Association="Self.FK__ElementoI__idEle__1DB06A4F">
+      <End Role="ElementoInventario" EntitySet="ElementoInventario" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__18EBB532" Association="Self.FK__ElementoI__idEle__18EBB532">
+      <End Role="ElementoInventarioKardexTipo" EntitySet="ElementoInventarioKardexTipo" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idEle__1BC821DD" Association="Self.FK__ElementoI__idEle__1BC821DD">
+      <End Role="ElementoInventarioKardexTipo" EntitySet="ElementoInventarioKardexTipo" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idOrd__151B244E" Association="Self.FK__ElementoI__idOrd__151B244E">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idOrd__160F4887" Association="Self.FK__ElementoI__idOrd__160F4887">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idPro__17F790F9" Association="Self.FK__ElementoI__idPro__17F790F9">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idPro__1AD3FDA4" Association="Self.FK__ElementoI__idPro__1AD3FDA4">
+      <End Role="Proveedor" EntitySet="Proveedor" />
+      <End Role="ElementoInventarioKardex" EntitySet="ElementoInventarioKardex" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idSer__1EA48E88" Association="Self.FK__ElementoI__idSer__1EA48E88">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ElementoI__idSer__1F98B2C1" Association="Self.FK__ElementoI__idSer__1F98B2C1">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="ElementoInventarioServicio" EntitySet="ElementoInventarioServicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__208CD6FA" Association="Self.FK__OrdenTrab__idEmp__208CD6FA">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__2180FB33" Association="Self.FK__OrdenTrab__idEmp__2180FB33">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__2BFE89A6" Association="Self.FK__OrdenTrab__idEmp__2BFE89A6">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idEmp__2CF2ADDF" Association="Self.FK__OrdenTrab__idEmp__2CF2ADDF">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2FCF1A8A" Association="Self.FK__OrdenTrab__idOrd__2FCF1A8A">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__30C33EC3" Association="Self.FK__OrdenTrab__idOrd__30C33EC3">
+      <End Role="OrdenInventario" EntitySet="OrdenInventario" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__22751F6C" Association="Self.FK__OrdenTrab__idOrd__22751F6C">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__236943A5" Association="Self.FK__OrdenTrab__idOrd__236943A5">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoBodega" EntitySet="OrdenTrabajoBodega" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2645B050" Association="Self.FK__OrdenTrab__idOrd__2645B050">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2739D489" Association="Self.FK__OrdenTrab__idOrd__2739D489">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoCliente" EntitySet="OrdenTrabajoCliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2A164134" Association="Self.FK__OrdenTrab__idOrd__2A164134">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2B0A656D" Association="Self.FK__OrdenTrab__idOrd__2B0A656D">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoEmpleado" EntitySet="OrdenTrabajoEmpleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2DE6D218" Association="Self.FK__OrdenTrab__idOrd__2DE6D218">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrdenTrab__idOrd__2EDAF651" Association="Self.FK__OrdenTrab__idOrd__2EDAF651">
+      <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+      <End Role="OrdenTrabajoOrdenInventario" EntitySet="OrdenTrabajoOrdenInventario" />
+    </AssociationSet>
+    <AssociationSet Name="UserRole" Association="Self.UserRole">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <EntitySet Name="RoleView" EntityType="GlobalTVModel.RoleView" />
+    <EntitySet Name="View" EntityType="GlobalTVModel.View" />
+    <AssociationSet Name="FK__RoleView__IdRole__3864608B" Association="GlobalTVModel.FK__RoleView__IdRole__3864608B">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleView" EntitySet="RoleView" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleView__IdView__395884C4" Association="GlobalTVModel.FK__RoleView__IdView__395884C4">
+      <End Role="View" EntitySet="View" />
+      <End Role="RoleView" EntitySet="RoleView" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RoleView">
+    <Key>
+      <PropertyRef Name="IdRoleView" />
+    </Key>
+    <Property Name="IdRoleView" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRole" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdView" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="GlobalTVModel.FK__RoleView__IdRole__3864608B" FromRole="RoleView" ToRole="Role" />
+    <NavigationProperty Name="View" Relationship="GlobalTVModel.FK__RoleView__IdView__395884C4" FromRole="RoleView" ToRole="View" />
+  </EntityType>
+  <EntityType Name="View">
+    <Key>
+      <PropertyRef Name="IdView" />
+    </Key>
+    <Property Name="IdView" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameView" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoleView" Relationship="GlobalTVModel.FK__RoleView__IdView__395884C4" FromRole="View" ToRole="RoleView" />
+  </EntityType>
+  <Association Name="FK__RoleView__IdRole__3864608B">
+    <End Type="GlobalTVModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="GlobalTVModel.RoleView" Role="RoleView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleView">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleView__IdView__395884C4">
+    <End Type="GlobalTVModel.View" Role="View" Multiplicity="1" />
+    <End Type="GlobalTVModel.RoleView" Role="RoleView" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="View">
+        <PropertyRef Name="IdView" />
+      </Principal>
+      <Dependent Role="RoleView">
+        <PropertyRef Name="IdView" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,81 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row">
+  <div class="col-md-12" *ngIf="search.length > 0">
+    <nb-card class="solar-card">
+      <nb-card-header class="text-success">
+        <div class="row">
+          <div class="col-md-6">
+            <strong>Busqueda: </strong> {{ search }}
+            <h2 *ngIf="historyBS.historySearch.length == 0">Sin Resultados</h2>
+          </div>
+          <div class="col-md-6" align="right">
+            <button type="button" class="btn btn-danger btn-icon" (click)="resetSearch()">
+              <i class="ion-close-circled"></i>
+            </button>
+          </div>
+        </div>
+      </nb-card-header>
+    </nb-card>
+  </div>
+  <div class="col-md-12" align="right">
+    <button class="btn btn-success" (click)="open(content)">Agregar Historia</button>
+    <br>
+    <br>
+  </div>
+  <div class="col-md-6" *ngFor="let history of historyBS.historySearch">
+    <nb-card class="solar-card">
+      <nb-card-header>
+        <h3>{{ history.Name }}</h3>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row" align="center">
+          <div class="col-12">
+            <h4>Identificador: {{ history.idHistory }}</h4>
+            <i class="ion-ios-bookmarks-outline icon-large"></i>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-hero-warning" (click)="open(content, history)">Editar</button>
+          </div>
+          <div class="col-6">
+            <a href="#/interactive/setting/history/sequence/{{history.idHistory}}" class="btn btn-hero-info">Secuencia</a>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+<!-- Modal Add History -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Agregar/Editar Historia
+      <i class="ion-map"></i>
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form class="form-group" #historyForm="ngForm" (ngSubmit)="onSubmit(historyForm)">
+    <div class="modal-body">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group col-12">
+            <input type="hidden" name="IdHistory" #IdHistory="ngModel" [(ngModel)]="historySelected.idHistory">
+            <input class="form-control" name="Name" #Name="ngModel" [(ngModel)]="historySelected.Name" placeholder="Nombre" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="form-row">
+        <div class="form-group col-6">
+          <button type="button" class="btn btn-hero-danger" (click)="c('Close click')">Cancelar</button>
+        </div>
+        <div class="form-group col-6">
+          <button type="submit" class="btn btn-hero-success">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</ng-template>
